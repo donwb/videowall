@@ -33,14 +33,22 @@ func renderWall(c echo.Context) error {
 	if isPlaying {
 		artist := userResult.Tracks[0].Artist.Name
 		album := userResult.Tracks[0].Album
+		track := userResult.Tracks[0].Name
+
 		info := "is now playing"
 		//result = artist + " " + album.Name + " " + info
 
 		fmt.Println(artist + " " + album.Name + " " + info)
 
+		// Get album art
+		albumArtURL := getAlbumArt(artist, track)
+		fmt.Println("URL: ", albumArtURL)
+
 		pi := &PlayingInfo{
 			Artist: artist,
 			Album:  album.Name,
+			Track:  track,
+			Art:    albumArtURL,
 		}
 		res := &VideoWallResult{
 			Idle:       false,
@@ -60,6 +68,8 @@ func renderWall(c echo.Context) error {
 type PlayingInfo struct {
 	Artist string `json:"artist"`
 	Album  string `json:"album"`
+	Track  string `json:"track"`
+	Art    string `json:"art"`
 }
 
 type VideoWallResult struct {
@@ -82,4 +92,27 @@ func main() {
 
 	e.Logger.Fatal(e.Start(":1323"))
 
+}
+
+func getAlbumArt(artist string, track string) string {
+
+	// refactor this out!
+	apikey := apiKey
+	apisecret := apiPassword
+
+	api := lastfm.New(apikey, apisecret)
+
+	// Make this checking better
+	trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": track})
+	images := trackInfo.Album.Images
+	if len(images) == 0 {
+		return "placeholder"
+	}
+
+	fmt.Println("Images: ", images)
+
+	largeImage := images[2].Url
+	return largeImage
+
+	//return "https://lastfm.freetls.fastly.net/i/u/174s/e5078801aed03ec9bc933a736349f143.png"
 }
