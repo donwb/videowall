@@ -73,7 +73,7 @@ func main() {
 
 	apiKey = os.Getenv("APIKEY")
 	apiPassword = os.Getenv("SECRET")
-
+	fmt.Println("======= ENVVARS =======")
 	fmt.Println("Key: " + apiKey + " Secret: " + apiPassword)
 
 	e := echo.New()

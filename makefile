@@ -14,6 +14,9 @@ all:
 build: ## Build
 	go build *.go
 
+test: 
+	gow run .
+	
 run:
 	gin
 
