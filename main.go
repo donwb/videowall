@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"html/template"
+	"io"
+	"net/http"
 	"os"
 
 	"github.com/labstack/echo/v4"
@@ -77,6 +80,14 @@ type VideoWallResult struct {
 	Idle       bool         `json:"idle"`
 }
 
+type TemplateRegistry struct {
+	templates *template.Template
+}
+
+func (t *TemplateRegistry) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
+
 func main() {
 
 	fmt.Println("Starting main....")
@@ -88,10 +99,22 @@ func main() {
 
 	e := echo.New()
 
+	e.Renderer = &TemplateRegistry{
+		templates: template.Must(template.ParseGlob("view/*.html")),
+	}
+	e.Static("/static", "view")
 	e.GET("/", renderWall)
+	e.GET("/home", HomeHandler)
 
 	e.Logger.Fatal(e.Start(":1323"))
 
+}
+
+func HomeHandler(c echo.Context) error {
+	return c.Render(http.StatusOK, "home.html", map[string]interface{}{
+		"name": "Don",
+		"msg":  "Last FM",
+	})
 }
 
 func getAlbumArt(artist string, track string) string {

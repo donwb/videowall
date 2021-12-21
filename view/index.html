@@ -1,0 +1,117 @@
+{{define "home.html"}}
+  <!DOCTYPE html>
+  <html>
+      <head>
+
+        <title>Currently Playing for | {{index . "name"}}</title>
+        <link rel="stylesheet" href="static/style.css">
+        <script>
+
+            const requestUpdateAwait = async() => {
+                const response = await fetch('/');
+                const json = await response.json();
+                console.log(json)
+
+                console.log('Calling modify page....')
+                modifyPage(json)
+            }
+                
+
+            function modifyPage(pageData) {
+                console.log("Idle: ", pageData.idle)
+
+                const idle = pageData.idle
+                if (idle) {
+                    modifyIdlePage(pageData)
+                } else {
+                    modifyNowPlaying(pageData)
+                }
+
+                
+            }
+
+            function modifyNowPlaying(pageData) {
+                const lastPlayed = document.querySelector('.last_played');
+                lastPlayed.style.display = "none";
+
+                console.log("Artist: ", pageData.nowPlaying.artist);
+                const artist = pageData.nowPlaying.artist;
+                const album = pageData.nowPlaying.album;
+                const track = pageData.nowPlaying.track;
+                const img = pageData.nowPlaying.art;
+
+                const msg = document.querySelector("#message");
+                msg.innerHTML = artist;
+
+                const trackElem = document.querySelector("#current_track")
+                trackElem.innerHTML = track
+
+                const albumElem = document.querySelector("#current_album")
+                albumElem.innerHTML = album
+
+                const artistElem = document.querySelector("#current_artist")
+                artistElem.innerHTML = artist
+
+                const imgElem = document.querySelector(".art_image")
+                imgElem.setAttribute("src", img)
+            }
+
+            function modifyIdlePage(pageData) {
+                console.log('The player is idle');
+            }
+
+            (function() {
+                requestUpdateAwait();
+            })();
+        </script>
+
+    </head>
+    <body>
+      <h1 id="message">{{index . "msg"}}</h1>
+
+    <div id="container">	
+		<div class="artwork"></div>
+		<section id="main">
+			<img class="art_image" src="" width="500" height="500">
+			<div class="text">
+				<div class="track" id="current_track">Track</div>
+				<div class="artist" id="current_artist">Artist</div>
+				<div class="album" id="current_album">Album</div>
+				<div class="number" id="current_number_plays">Number</div>
+			</div>		
+		</section>		
+	</div>
+
+    <div id="container" class="last_played">	
+        <div class="user"><?php echo $username; ?></div>
+        <div class="stat_box">
+            <div class="header">scrobbles</div>
+            <div class="scrobbles"><?php echo $playcount; ?></div>
+        </div>
+        <div class="stat_box">
+            <div class="header">last played</div>
+            <div class="play_box">
+            <div class="track"><?php echo $trackInfo['name']; ?></div>
+            <div class="artist"><?php echo $trackInfo['artist']; ?></div>
+            </div>
+        </div>
+        <div class="list">Top Albums - Last 7 Days</div>
+        <div class="albums">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/">
+            <img class="top_albums" src="/>">
+            <img class="top_albums" src="/>">
+            <img class="top_albums" src="/>">
+        </div>			
+    </div>
+
+    </body>
+  </html>
+{{end}}
