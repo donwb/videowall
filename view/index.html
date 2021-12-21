@@ -4,10 +4,12 @@
       <head>
 
         <title>Currently Playing for | {{index . "name"}}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
         <link rel="stylesheet" href="static/style.css">
         <script>
 
-            const requestUpdateAwait = async() => {
+            const requestUpdate = async() => {
                 const response = await fetch('/');
                 const json = await response.json();
                 console.log(json)
@@ -54,6 +56,11 @@
 
                 const imgElem = document.querySelector(".art_image")
                 imgElem.setAttribute("src", img)
+
+                const artworkElem = document.querySelector(".artwork")
+                console.log('artworkElem: ' + img)
+
+                artworkElem.style.backgroundImage = 'url(' + img + ')'
             }
 
             function modifyIdlePage(pageData) {
@@ -61,7 +68,10 @@
             }
 
             (function() {
-                requestUpdateAwait();
+                setInterval(
+                    requestUpdate,
+                    5000
+                );
             })();
         </script>
 
