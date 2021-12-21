@@ -106,7 +106,16 @@ func getAlbumArt(artist string, track string) string {
 	trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": track})
 	images := trackInfo.Album.Images
 	if len(images) == 0 {
-		return "placeholder"
+		newTrackName := removeRemastered(track)
+		trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": newTrackName})
+		fmt.Println("NEW TRACK NAME: ", newTrackName)
+		if len(images) == 0 {
+			return "placeholder"
+		} else {
+			images = trackInfo.Album.Images
+			return images[2].Url
+		}
+
 	}
 
 	fmt.Println("Images: ", images)
@@ -115,4 +124,9 @@ func getAlbumArt(artist string, track string) string {
 	return largeImage
 
 	//return "https://lastfm.freetls.fastly.net/i/u/174s/e5078801aed03ec9bc933a736349f143.png"
+}
+
+func removeRemastered(trackName string) string {
+	// try to remove the (remastered) from the end of a song if it gets in the way of album art
+	return "Champagne Supernova"
 }
