@@ -21,7 +21,7 @@ run:
 	gin
 
 docker-build:
-	docker build -t donwb/videowall .
+	docker build -t donwb/videowall:0.1 .
 
 
 docker-run:
