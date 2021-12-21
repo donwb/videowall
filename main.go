@@ -44,14 +44,16 @@ func renderWall(c echo.Context) error {
 		fmt.Println(artist + " " + album.Name + " " + info)
 
 		// Get album art
-		albumArtURL := getAlbumArt(artist, track)
+		albumArtURL, playcount := getAlbumArtAndPlayCount(artist, track)
+
 		fmt.Println("URL: ", albumArtURL)
 
 		pi := &PlayingInfo{
-			Artist: artist,
-			Album:  album.Name,
-			Track:  track,
-			Art:    albumArtURL,
+			Artist:         artist,
+			Album:          album.Name,
+			Track:          track,
+			Art:            albumArtURL,
+			TotalPlayCount: playcount,
 		}
 		res := &VideoWallResult{
 			Idle:       false,
@@ -69,10 +71,11 @@ func renderWall(c echo.Context) error {
 }
 
 type PlayingInfo struct {
-	Artist string `json:"artist"`
-	Album  string `json:"album"`
-	Track  string `json:"track"`
-	Art    string `json:"art"`
+	Artist         string `json:"artist"`
+	Album          string `json:"album"`
+	Track          string `json:"track"`
+	Art            string `json:"art"`
+	TotalPlayCount string `json:"totalPlayCount"`
 }
 
 type VideoWallResult struct {
@@ -103,8 +106,8 @@ func main() {
 		templates: template.Must(template.ParseGlob("view/*.html")),
 	}
 	e.Static("/static", "view")
-	e.GET("/", renderWall)
-	e.GET("/home", HomeHandler)
+	e.GET("/", HomeHandler)
+	e.GET("/api", renderWall)
 
 	e.Logger.Fatal(e.Start(":1323"))
 
@@ -117,8 +120,7 @@ func HomeHandler(c echo.Context) error {
 	})
 }
 
-func getAlbumArt(artist string, track string) string {
-
+func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 	// refactor this out!
 	apikey := apiKey
 	apisecret := apiPassword
@@ -127,16 +129,19 @@ func getAlbumArt(artist string, track string) string {
 
 	// Make this checking better
 	trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": track})
+
+	playcount := trackInfo.PlayCount
+
 	images := trackInfo.Album.Images
 	if len(images) == 0 {
 		newTrackName := removeRemastered(track)
 		trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": newTrackName})
 		fmt.Println("NEW TRACK NAME: ", newTrackName)
 		if len(images) == 0 {
-			return "placeholder"
+			return "placeholder", playcount
 		} else {
 			images = trackInfo.Album.Images
-			return images[2].Url
+			return images[2].Url, playcount
 		}
 
 	}
@@ -144,7 +149,7 @@ func getAlbumArt(artist string, track string) string {
 	fmt.Println("Images: ", images)
 
 	largeImage := images[2].Url
-	return largeImage
+	return largeImage, playcount
 
 	//return "https://lastfm.freetls.fastly.net/i/u/174s/e5078801aed03ec9bc933a736349f143.png"
 }

@@ -10,7 +10,7 @@
         <script>
 
             const requestUpdate = async() => {
-                const response = await fetch('/');
+                const response = await fetch('/api');
                 const json = await response.json();
                 console.log(json)
 
@@ -41,6 +41,7 @@
                 const album = pageData.nowPlaying.album;
                 const track = pageData.nowPlaying.track;
                 const img = pageData.nowPlaying.art;
+                const number = pageData.nowPlaying.totalPlayCount;
 
                 const msg = document.querySelector("#message");
                 msg.innerHTML = artist;
@@ -58,9 +59,10 @@
                 imgElem.setAttribute("src", img)
 
                 const artworkElem = document.querySelector(".artwork")
-                console.log('artworkElem: ' + img)
-
                 artworkElem.style.backgroundImage = 'url(' + img + ')'
+
+                const numberElem = document.querySelector("#current_number_plays")
+                numberElem.innerHTML = number + ' Scrobbles'
             }
 
             function modifyIdlePage(pageData) {
