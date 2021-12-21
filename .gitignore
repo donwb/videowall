@@ -2,3 +2,4 @@
 env
 settings.json
 run.log
+docker-env
