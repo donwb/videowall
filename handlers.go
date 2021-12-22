@@ -70,3 +70,10 @@ func homeHandler(c echo.Context) error {
 		"msg":  "Last FM",
 	})
 }
+
+func squareHandler(c echo.Context) error {
+	return c.Render(http.StatusOK, "home.html", map[string]interface{}{
+		"name": "Don",
+		"msg":  "Last FM",
+	})
+}
