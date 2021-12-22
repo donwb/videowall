@@ -33,6 +33,9 @@
             }
 
             function modifyNowPlaying(pageData) {
+                const playing = document.querySelector('.now_playing')
+                playing.style.display = "block"
+                
                 const lastPlayed = document.querySelector('.last_played');
                 lastPlayed.style.display = "none";
 
@@ -81,7 +84,7 @@
     <body>
       <h1 id="message">{{index . "msg"}}</h1>
 
-    <div id="container">	
+    <div id="container" class="now_playing" style="display: none;">	
 		<div class="artwork"></div>
 		<section id="main">
 			<img class="art_image" src="" width="500" height="500">
@@ -94,7 +97,7 @@
 		</section>		
 	</div>
 
-    <div id="container" class="last_played">	
+    <div id="container" class="last_played" style="display: none;">	
         <div class="user"><?php echo $username; ?></div>
         <div class="stat_box">
             <div class="header">scrobbles</div>
