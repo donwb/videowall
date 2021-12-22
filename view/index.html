@@ -6,7 +6,7 @@
         <title>Currently Playing for | {{index . "name"}}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-        <link rel="stylesheet" href="static/style.css">
+        <link rel="stylesheet" href="static/widestyle.css">
         <script>
 
             const requestUpdate = async() => {
@@ -35,7 +35,7 @@
             function modifyNowPlaying(pageData) {
                 const playing = document.querySelector('.now_playing')
                 playing.style.display = "block"
-                
+
                 const lastPlayed = document.querySelector('.last_played');
                 lastPlayed.style.display = "none";
 
@@ -73,10 +73,13 @@
             }
 
             (function() {
+                /*
                 setInterval(
                     requestUpdate,
                     5000
                 );
+                */
+               requestUpdate()
             })();
         </script>
 
@@ -85,17 +88,23 @@
       <h1 id="message">{{index . "msg"}}</h1>
 
     <div id="container" class="now_playing" style="display: none;">	
-		<div class="artwork"></div>
-		<section id="main">
-			<img class="art_image" src="" width="500" height="500">
-			<div class="text">
-				<div class="track" id="current_track">Track</div>
-				<div class="artist" id="current_artist">Artist</div>
-				<div class="album" id="current_album">Album</div>
-				<div class="number" id="current_number_plays">Number</div>
-			</div>		
-		</section>		
+        <div class="left_side">
+            <div class="artwork"></div>
+            <section id="main">
+                <img class="art_image" src="" width="500" height="500">
+                    
+            </section>
+        </div>
+        <div class="right_side">
+            <div class="text">
+                <div class="track" id="current_track">Track</div>
+                <div class="artist" id="current_artist">Artist</div>
+                <div class="album" id="current_album">Album</div>
+                <div class="number" id="current_number_plays">Number</div>
+            </div>	
+        </div>    	
 	</div>
+    
 
     <div id="container" class="last_played" style="display: none;">	
         <div class="user"><?php echo $username; ?></div>
