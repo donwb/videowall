@@ -1,4 +1,4 @@
-{{define "widehome.html"}}
+{{define "tv.html"}}
   <!DOCTYPE html>
   <html>
       <head>
@@ -6,7 +6,7 @@
         <title>Currently Playing for | {{index . "name"}}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-        <link rel="stylesheet" href="static/widestyle.css">
+        <link rel="stylesheet" href="static/tv.css">
         <script>
 
             const requestUpdate = async() => {
@@ -45,10 +45,10 @@
                 const track = pageData.nowPlaying.track;
                 const img = pageData.nowPlaying.art;
                 const number = pageData.nowPlaying.totalPlayCount;
-
+                /*
                 const msg = document.querySelector("#message");
                 msg.innerHTML = artist;
-
+                */
                 const trackElem = document.querySelector("#current_track")
                 trackElem.innerHTML = track
 
@@ -65,7 +65,9 @@
                 artworkElem.style.backgroundImage = 'url(' + img + ')'
 
                 const numberElem = document.querySelector("#current_number_plays")
-                numberElem.innerHTML = number + ' Scrobbles'
+                const nf = new Intl.NumberFormat('en-US')
+                const n = nf.format(number)
+                numberElem.innerHTML = n + ' Scrobbles'
             }
 
             function modifyIdlePage(pageData) {
@@ -85,8 +87,6 @@
 
     </head>
     <body>
-      <h1 id="message">{{index . "msg"}}</h1>
-
     <div id="container" class="now_playing" style="display: none;">	
         <div class="left_side">
             <div class="artwork"></div>

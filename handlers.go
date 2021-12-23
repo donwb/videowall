@@ -77,3 +77,10 @@ func squareHandler(c echo.Context) error {
 		"msg":  "Last FM",
 	})
 }
+
+func tvHandler(c echo.Context) error {
+	return c.Render(http.StatusOK, "tv.html", map[string]interface{}{
+		"name": "Don",
+		"msg":  "Last FM",
+	})
+}
