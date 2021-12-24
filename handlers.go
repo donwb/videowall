@@ -65,7 +65,7 @@ func renderWall(c echo.Context) error {
 }
 
 func homeHandler(c echo.Context) error {
-	return c.Render(http.StatusOK, "widehome.html", map[string]interface{}{
+	return c.Render(http.StatusOK, "hdtv.html", map[string]interface{}{
 		"name": "Don",
 		"msg":  "Last FM",
 	})

@@ -6,25 +6,24 @@ body {
 
 
 #container {
-	height: 720px;
-    /* width: 1280px; */   
+	height: 1024px;
+    width: 1920px;
 	margin: 0px auto;
 	border: 1px solid #000;
     align-items: center;
     justify-content: center;
 }
- 
 
 .left_side {
-    margin: 50px;
+    margin: 100px;
 
 }
 
 .right_side {
-    margin: 50px;
+    margin: 100px;
     position: absolute;
     top: 200px;
-    left: 650px;
+    left: 785px;
 }
 
 .artwork {
@@ -34,14 +33,14 @@ body {
 	background-size: 120%;
 	filter: blur(80px);
 	-webkit-filter: blur(80px);
-	height: 550px;
-	width: 550px;
+	height: 700px;
+	width: 700px;
 	overflow: hidden;
 }
 
 .art_image {
-    top: -550px;
-	width: 550px;
+    top: -700px;
+	width: 700px;
 	border-radius: 6px;
 	position: relative;
 	z-index: 2;
@@ -51,7 +50,7 @@ body {
 
 .track {
 	font-weight: bold;
-	font-size: 44px;
+	font-size: 100px;
 	margin-top: 4px;
 	margin-bottom: 0px;
 	overflow: hidden;
@@ -62,14 +61,14 @@ body {
 }
 
 .artist {
-	font-size: 35px;
+	font-size: 80px;
 	margin-bottom: 4px;
 	color: #F4F4F4;
 	text-align: center;
 }
 
 .album {
-	font-size: 30px;
+	font-size: 70px;
 	color: #8D9194;
 	font-weight: 100;
 	text-align: center;
@@ -83,7 +82,7 @@ body {
 .number {
 	font-weight: 100;
 	margin-top: 7px;
-	font-size: 20px;
+	font-size: 40px;
 	text-transform: uppercase;
 	color: #8D9194;
 	text-align: center;

@@ -1,4 +1,4 @@
-{{define "widehome.html"}}
+{{define "hdtv.html"}}
   <!DOCTYPE html>
   <html>
       <head>
@@ -6,7 +6,7 @@
         <title>Currently Playing for | {{index . "name"}}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-        <link rel="stylesheet" href="static/widestyle.css">
+        <link rel="stylesheet" href="static/hdtv.css">
         <script>
 
             const requestUpdate = async() => {
@@ -34,10 +34,10 @@
 
             function modifyNowPlaying(pageData) {
                 const playing = document.querySelector('.now_playing')
-                playing.style.display = "block"
+                //playing.style.display = "block"
 
                 const lastPlayed = document.querySelector('.last_played');
-                lastPlayed.style.display = "none";
+                //lastPlayed.style.display = "none";
 
                 console.log("Artist: ", pageData.nowPlaying.artist);
                 const artist = pageData.nowPlaying.artist;
@@ -47,7 +47,7 @@
                 const number = pageData.nowPlaying.totalPlayCount;
 
                 const msg = document.querySelector("#message");
-                msg.innerHTML = artist;
+                //msg.innerHTML = artist;
 
                 const trackElem = document.querySelector("#current_track")
                 trackElem.innerHTML = track
@@ -65,7 +65,9 @@
                 artworkElem.style.backgroundImage = 'url(' + img + ')'
 
                 const numberElem = document.querySelector("#current_number_plays")
-                numberElem.innerHTML = number + ' Scrobbles'
+                const nf = new Intl.NumberFormat('en-US')
+                const n = nf.format(number)
+                numberElem.innerHTML = n + ' Scrobbles'
             }
 
             function modifyIdlePage(pageData) {
@@ -73,25 +75,24 @@
             }
 
             (function() {
-                /*
+                
                 setInterval(
                     requestUpdate,
                     5000
                 );
-                */
-               requestUpdate()
+                
+               //requestUpdate()
             })();
         </script>
 
     </head>
     <body>
-      <h1 id="message">{{index . "msg"}}</h1>
 
-    <div id="container" class="now_playing" style="display: none;">	
+    <div id="container" class="now_playing">	
         <div class="left_side">
             <div class="artwork"></div>
             <section id="main">
-                <img class="art_image" src="" width="500" height="500">
+                <img class="art_image" src="">
                     
             </section>
         </div>
@@ -106,35 +107,6 @@
 	</div>
     
 
-    <div id="container" class="last_played" style="display: none;">	
-        <div class="user"><?php echo $username; ?></div>
-        <div class="stat_box">
-            <div class="header">scrobbles</div>
-            <div class="scrobbles"><?php echo $playcount; ?></div>
-        </div>
-        <div class="stat_box">
-            <div class="header">last played</div>
-            <div class="play_box">
-            <div class="track"><?php echo $trackInfo['name']; ?></div>
-            <div class="artist"><?php echo $trackInfo['artist']; ?></div>
-            </div>
-        </div>
-        <div class="list">Top Albums - Last 7 Days</div>
-        <div class="albums">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/">
-            <img class="top_albums" src="/>">
-            <img class="top_albums" src="/>">
-            <img class="top_albums" src="/>">
-        </div>			
-    </div>
 
     </body>
   </html>
