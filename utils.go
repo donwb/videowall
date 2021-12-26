@@ -48,6 +48,8 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 
 	// Make this checking better
 	trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": track})
+	mbid := trackInfo.Album.Mbid
+	fmt.Print("mbid: ", mbid)
 
 	playcount := trackInfo.PlayCount
 
