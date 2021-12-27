@@ -37,6 +37,7 @@ func main() {
 	e.GET("/tv", tvHandler)
 	e.GET("/square", squareHandler)
 	e.GET("/api", renderWall)
+	e.GET("/test", testHandler)
 
 	// Start!
 	e.Logger.Fatal(e.Start(":1323"))

@@ -14,14 +14,9 @@ func renderWall(c echo.Context) error {
 	apikey := apiKey
 	apisecret := apiPassword
 
-	fmt.Println("here!")
-
 	fmt.Println(apiKey + "   " + apiPassword)
 
 	api := lastfm.New(apikey, apisecret)
-
-	//var result string = ""
-	fmt.Println("This is a test")
 
 	userResult, _ := api.User.GetRecentTracks(lastfm.P{"user": "dbrowning"})
 
@@ -83,4 +78,10 @@ func tvHandler(c echo.Context) error {
 		"name": "Don",
 		"msg":  "Last FM",
 	})
+}
+
+func testHandler(c echo.Context) error {
+	arturl := getCustomArt("2019-08-11 State Farm Arena Atlanta")
+	print(arturl)
+	return c.String(200, arturl)
 }

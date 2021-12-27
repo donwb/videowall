@@ -21,10 +21,10 @@ run:
 	gin
 
 docker-build:
-	docker build -t donwb/videowall:0.4 .
+	docker build -t donwb/videowall:0.5 .
 
 
 docker-run:
-	docker run --env-file=docker-env -p 80:1323 -it donwb/videowall 
+	docker run --env-file=docker-env -p 80:1323 -it donwb/videowall:0.5 
 
 .DEFAULT_GOAL := all
