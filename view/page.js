@@ -1,0 +1,74 @@
+const requestUpdate = async() => {
+    const response = await fetch('/api');
+    const json = await response.json();
+    console.log(json)
+
+    console.log('Calling modify page....')
+    modifyPage(json)
+}
+    
+
+function modifyPage(pageData) {
+    console.log("Idle: ", pageData.idle)
+
+    const idle = pageData.idle
+    if (idle) {
+        modifyIdlePage(pageData)
+    } else {
+        modifyNowPlaying(pageData)
+    }
+
+    
+}
+
+function modifyNowPlaying(pageData) {
+    const playing = document.querySelector('.now_playing')
+    //playing.style.display = "block"
+
+    const lastPlayed = document.querySelector('.last_played');
+    //lastPlayed.style.display = "none";
+
+    console.log("Artist: ", pageData.nowPlaying.artist);
+    const artist = pageData.nowPlaying.artist;
+    const album = pageData.nowPlaying.album;
+    const track = pageData.nowPlaying.track;
+    const img = pageData.nowPlaying.art;
+    const number = pageData.nowPlaying.totalPlayCount;
+
+    const msg = document.querySelector("#message");
+    //msg.innerHTML = artist;
+
+    const trackElem = document.querySelector("#current_track")
+    trackElem.innerHTML = track
+
+    const albumElem = document.querySelector("#current_album")
+    albumElem.innerHTML = album
+
+    const artistElem = document.querySelector("#current_artist")
+    artistElem.innerHTML = artist
+
+    const imgElem = document.querySelector(".art_image")
+    imgElem.setAttribute("src", img)
+
+    const artworkElem = document.querySelector(".artwork")
+    artworkElem.style.backgroundImage = 'url(' + img + ')'
+
+    const numberElem = document.querySelector("#current_number_plays")
+    const nf = new Intl.NumberFormat('en-US')
+    const n = nf.format(number)
+    numberElem.innerHTML = n + ' Scrobbles'
+}
+
+function modifyIdlePage(pageData) {
+    console.log('The player is idle');
+}
+
+(function() {
+                
+    setInterval(
+        requestUpdate,
+        5000
+    );
+    
+   //requestUpdate()
+})();

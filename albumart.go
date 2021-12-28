@@ -64,22 +64,24 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 		}
 	}
 
-	images := trackInfo.Album.Images
-	if len(images) == 0 {
-		newTrackName := removeRemastered(track)
-		trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": newTrackName})
-		fmt.Println("NEW TRACK NAME: ", newTrackName)
-		if len(images) == 0 {
-			return "static/art/placeholder.jpg", playcount
-		} else {
-			images = trackInfo.Album.Images
-			return images[2].Url, playcount
-		}
+	userImages := userResult.Tracks[0].Images
+	fmt.Println(userImages)
 
+	// https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png
+	// last.fm placeholder
+	if len(userImages) == 0 {
+		//newTrackName := removeRemastered(track)
+		//trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": newTrackName})
+		// replace this with a call to coverartarchive.com if needed
+
+		return "static/art/placeholder.jpg", playcount
 	}
 
-	fmt.Println("Images: ", images)
+	largeImage := userImages[2].Url
+	if strings.Contains(largeImage, "1562f.png") {
+		fmt.Println("last.fm placeholder found, returning mine")
+		return "static/art/placeholder.jpg", playcount
+	}
 
-	largeImage := images[2].Url
 	return largeImage, playcount
 }

@@ -39,11 +39,6 @@ func isNowPlaying(trackInfo lastfm.UserGetRecentTracks) bool {
 	}
 }
 
-func removeRemastered(trackName string) string {
-	// try to remove the (remastered) from the end of a song if it gets in the way of album art
-	return "Champagne Supernova"
-}
-
 func checkError(err error, msg string) {
 	if err != nil {
 		fmt.Println("--------------------")

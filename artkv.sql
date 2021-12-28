@@ -98,4 +98,3 @@ set arturl = '2019-08-08 Bridgestone Arena.png'
 where album = '2019-08-08 Bridgestone Arena'
 
 
-
