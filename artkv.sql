@@ -15,9 +15,6 @@ insert into artkv (album, arturl) values ('2019-07-26 CJ Madison Square Garden',
 insert into artkv (album, arturl) values ('2019-07-25 Madison Square Garden', '2019-07-25 Madison Square Garden.jpg');
 insert into artkv (album, arturl) values ('2019-09-04 Enterprise Center, St Louis, MO', '2019-09-04 Enterprise Center, St Louis, MO.jpg');
 insert into artkv (album, arturl) values ('2019-08-11 State Farm Arena Atlanta', '2019-08-11 State Farm Arena Atlanta.jpg');
-
-
-
 insert into artkv (album, arturl) values ('The Cure in Orange', 'The Cure in Orange.jpg');
 insert into artkv (album, arturl) values ('Indigenous Species', 'Indigenous Species.jpg');
 insert into artkv (album, arturl) values ('Dreamstorm Collection', 'Dreamstorm Collection.jpg');
@@ -25,7 +22,7 @@ insert into artkv (album, arturl) values ('ZOO TV Tour From Sydney', 'ZOO TV Tou
 insert into artkv (album, arturl) values ('The Swing', 'The Swing.jpg');
 insert into artkv (album, arturl) values ('Any Given Thursday', 'Any Given Thursday.jpg');
 insert into artkv (album, arturl) values ('As Is Volume I', 'As Is Volume I.jpg');
-insert into artkv (album, arturl) values ('As/Is (Live @ Houston, TX - 7/24/04)', 'As_Is (Live @ Houston, TX - 7_24_04)');
+insert into artkv (album, arturl) values ('As/Is (Live @ Houston, TX - 7/24/04)', 'As_Is (Live @ Houston, TX - 7_24_04).jpg');
 insert into artkv (album, arturl) values ('As/Is (Live @ Mountain View, CA - 7/16/04)', 'As_Is (Live @ Mountain View, CA - 7_16_04).jpg');
 insert into artkv (album, arturl) values ('As/Is (Live @ Philadelphia, PA & Hartford, CT - 8/14/04-8/15/04)', 'As_Is (Live @ Philadelphia, PA & Hartford, CT - 8_14_04-8_15_04).jpg');
 insert into artkv (album, arturl) values ('As/Is (Live)', 'As_Is (Live).jpg');
@@ -78,3 +75,27 @@ insert into artkv (album, arturl) values ('2016-05-20, Sleep Train Amph, Chula V
 insert into artkv (album, arturl) values ('2016-05-26, Shoreline Amphitheatre, Mountain View, CA', '2016-05-20, Sleep Train Amph, Chula Vista, CA.jpg');
 insert into artkv (album, arturl) values ('2016-06-05 Fiddler''s Green Englewood, CO', '2016-05-20, Sleep Train Amph, Chula Vista, CA.jpg');
 insert into artkv (album, arturl) values ('2019-06-21 Southside Festival', '2019-06-21 Southside Festival.jpg');
+
+
+update artkv
+set arturl = 'Live at Lallapalooza.png'
+where album = 'Live at Lallapalooza.jpg'
+
+update artkv
+set arturl = 'Bestival Live - 2016.png'
+where album = 'Bestival Live - 2016'
+
+update artkv
+set arturl = '2010-07-21 - Jones Beach Amphitheater.png'
+where album = '2010-07-21 - Jones Beach Amphitheater'
+
+update artkv
+set arturl = 'Bud Light Dive Bar Tour 2017.png'
+where album = 'Bud Light Dive Bar Tour 2017'
+
+update artkv
+set arturl = '2019-08-08 Bridgestone Arena.png'
+where album = '2019-08-08 Bridgestone Arena'
+
+
+

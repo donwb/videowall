@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"strings"
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/shkh/lastfm-go/lastfm"
@@ -15,7 +16,9 @@ func getCustomArt(album string) string {
 	defer db.Close()
 
 	checkError(err, "db opened")
-	query := "select arturl from artkv where album = '" + album + "'"
+	escapedAlbum := strings.ReplaceAll(album, "'", "''")
+	query := "select arturl from artkv where album = '" + escapedAlbum + "'"
+
 	fmt.Println("Art query: ", query)
 	rows, err := db.Query(query)
 	defer rows.Close()
@@ -67,7 +70,7 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 		trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": newTrackName})
 		fmt.Println("NEW TRACK NAME: ", newTrackName)
 		if len(images) == 0 {
-			return "placeholder", playcount
+			return "static/art/placeholder.jpg", playcount
 		} else {
 			images = trackInfo.Album.Images
 			return images[2].Url, playcount
