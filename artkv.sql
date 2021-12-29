@@ -98,3 +98,22 @@ set arturl = '2019-08-08 Bridgestone Arena.png'
 where album = '2019-08-08 Bridgestone Arena'
 
 
+insert into artkv (album, arturl) values ('Live in Hyde Park', 'Live in Hyde Park.jpg');
+insert into artkv (album, arturl) values ('2012/03/31 Orlando, FL', '2012_03_31 Orlando, FL.jpg');
+insert into artkv (album, arturl) values ('RTJ4', 'RTJ4.jpg');
+insert into artkv (album, arturl) values ('Persona Non Grata - Chicago Live 1995', 'Persona Non Grata - Chicago Live 1995.jpg');
+insert into artkv (album, arturl) values ('Mental Floss for the Globe / Hollywood Live 1990', 'Mental Floss for the Globe _ Hollywood Live 1990.jpg');
+insert into artkv (album, arturl) values ('The Remix Collection', 'The Remix Collection.jpg');
+insert into artkv (album, arturl) values ('Artantica / Paris Live 1999', 'Artantica _ Paris Live 1999.jpg');
+insert into artkv (album, arturl) values ('1993/06/19 San Francisco, CA', '1993_06_19 San Francisco, CA.jpg');
+insert into artkv (album, arturl) values ('2014/06/22 Atlanta, GA', '2014_06_22 Atlanta, GA.jpg');
+insert into artkv (album, arturl) values ('2015/08/02 St. Augustine, FL', 'ccrw150802_01.jpg');
+insert into artkv (album, arturl) values ('2015/08/03 Atlanta, GA', 'ccrw150802_01.jpg');
+insert into artkv (album, arturl) values ('2016/07/25 Atlanta, GA', '2016_07_25 Atlanta, GA.jpg');
+insert into artkv (album, arturl) values ('2018/07/29 Atlanta, GA', '2018_07_29 Atlanta, GA.jpg');
+insert into artkv (album, arturl) values ('Live at The Bowery Ballroom', 'Live at The Bowery Ballroom.jpg');
+insert into artkv (album, arturl) values ('Everything That''s Left', 'Everything That''s Left.jpg');
+insert into artkv (album, arturl) values ('Jet Black', 'Jet Black.jpg');
+insert into artkv (album, arturl) values ('Lp Lp', 'Lp Lp.jpg');
+insert into artkv (album, arturl) values ('Doomsday - Back & Forth, Vol. 5 (Live)', 'Doomsday - Back & Forth, Vol. 5 (Live).jpg');
+insert into artkv (album, arturl) values ('Tormentor - EP', 'Tormentor - EP.jpg');
