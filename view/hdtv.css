@@ -48,6 +48,20 @@ body {
 	box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.7);
 }
 
+.artist_banner {
+	color: #fff;
+    position: absolute;
+    top: 859px;
+    left: 124px;
+    font-size: 44px;
+    font-family: Helvetica Neue;
+    font-weight: 200;
+}
+
+#artist_name {
+	font-weight: 400;
+}
+
 .track {
 	font-weight: bold;
 	font-size: 64px;

@@ -45,7 +45,12 @@ function modifyNowPlaying(pageData) {
     albumElem.innerHTML = album
 
     const artistElem = document.querySelector("#current_artist")
+    const nowPlayingElem = document.querySelector("#artist_name")
+
     artistElem.innerHTML = artist
+    if (nowPlayingElem !== null) {
+        nowPlayingElem.innerHTML = artist
+    }
 
     const imgElem = document.querySelector(".art_image")
     imgElem.setAttribute("src", img)
