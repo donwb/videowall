@@ -15,16 +15,16 @@ build: ## Build
 	go build *.go
 
 test: 
-	gow -e=go,mod,html run .
+	gow -e=go,mod,html,js run .
 	
 run:
 	gin
 
 docker-build:
-	docker build -t donwb/videowall:0.6 .
+	docker build -t donwb/videowall:0.7 .
 
 
 docker-run:
-	docker run --env-file=docker-env -p 80:1323 -it donwb/videowall:0.6 
+	docker run --env-file=docker-env -p 80:1323 -it donwb/videowall:0.7 
 
 .DEFAULT_GOAL := all

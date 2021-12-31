@@ -1,0 +1,102 @@
+body {
+	background: #000;
+	color: #fff;
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, sans-serif; 
+}
+
+
+#container {
+	height: 1024px;
+    width: 1920px;
+	margin: 0px auto;
+	border: 1px solid #000;
+    align-items: center;
+    justify-content: center;
+}
+
+.left_side {
+    margin: 100px;
+
+}
+
+.right_side {
+    margin: 100px;
+    position: absolute;
+    top: 477px;
+    left: 785px;
+}
+
+.artwork {
+	background-image: url("https://lastfm.freetls.fastly.net/i/u/174s/2f790d71a913c29fceecfa5b56916451.png");
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: 120%;
+	filter: blur(80px);
+	-webkit-filter: blur(80px);
+	height: 700px;
+	width: 700px;
+	overflow: hidden;
+}
+
+.art_image {
+    top: -600px;
+	width: 700px;
+	border-radius: 6px;
+	position: relative;
+	z-index: 2;
+	margin-top: 30px;
+	box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.7);
+}
+
+.artist_banner {
+	color: #fff;
+    position: absolute;
+    top: 950px;
+    left: 124px;
+    font-size: 44px;
+    font-weight: 200;
+}
+
+#artist_name {
+	font-weight: 400;
+}
+
+.track {
+	font-weight: bold;
+	font-size: 64px;
+	margin-top: 4px;
+	margin-bottom: 0px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-align: center;
+}
+
+.artist {
+	font-size: 50px;
+	margin-bottom: 4px;
+	color: #F4F4F4;
+	text-align: center;
+}
+
+.album {
+	font-size: 40px;
+	color: #8D9194;
+	font-weight: 100;
+	text-align: center;
+	font-style: italic;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.number {
+	font-weight: 100;
+	margin-top: 7px;
+	font-size: 40px;
+	text-transform: uppercase;
+	color: #8D9194;
+	text-align: center;
+}

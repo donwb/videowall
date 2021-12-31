@@ -34,6 +34,7 @@ func main() {
 	// Routes
 	e.Static("/static", "view")
 	e.GET("/", homeHandler)
+	e.GET("/hdlow", hdlowHandler)
 	e.GET("/tv", tvHandler)
 	e.GET("/square", squareHandler)
 	e.GET("/api", renderWall)

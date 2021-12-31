@@ -1,0 +1,43 @@
+{{define "hdtvlow.html"}}
+  <!DOCTYPE html>
+  <html>
+      <head>
+
+        <title>Currently Playing for | {{index . "name"}}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="static/hdtvlow.css">
+        <script src="static/page.js"></script>
+    </head>
+    <body>
+
+    <div id="container" class="now_playing">	
+        <div class="left_side">
+            <div class="artwork"></div>
+            <section id="main">
+                <img class="art_image" src="">
+                <div class="artist_banner">Now Playing: <span id="artist_name"></span></div>
+            </section>
+            
+        </div>
+        <div class="right_side">
+            <div class="text">
+                
+                
+                
+                <div class="number" id="current_number_plays">Number</div>
+                <div class="album" id="current_album">Album</div>
+                <div class="artist" id="current_artist">Artist</div>
+                <div class="track" id="current_track">Track</div>
+            </div>	
+        </div>    	
+	</div>
+    
+
+
+    </body>
+  </html>
+{{end}}

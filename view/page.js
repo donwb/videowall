@@ -27,8 +27,29 @@ function modifyNowPlaying(pageData) {
 
     const lastPlayed = document.querySelector('.last_played');
     //lastPlayed.style.display = "none";
+    
+    const trackElem = document.querySelector("#current_track")
+    const pageTrack = trackElem.innerHTML
+    const nowPlayingTrack = pageData.nowPlaying.track
 
-    console.log("Artist: ", pageData.nowPlaying.artist);
+    console.log("Track: ", nowPlayingTrack);
+    console.log("Page Track", pageTrack)
+
+    switch (pageTrack) {
+        case 'Track':
+            modifyNowPlayingPage(pageData, trackElem)
+            break;
+        case nowPlayingTrack:
+            console.log('no changes, same track....')
+            break;
+        default:
+            modifyNowPlayingPage(pageData, trackElem)
+    }
+
+
+}
+
+function modifyNowPlayingPage(pageData, trackElem) {
     const artist = pageData.nowPlaying.artist;
     const album = pageData.nowPlaying.album;
     const track = pageData.nowPlaying.track;
@@ -37,31 +58,29 @@ function modifyNowPlaying(pageData) {
 
     const msg = document.querySelector("#message");
     //msg.innerHTML = artist;
+    trackElem.innerHTML = track;
 
-    const trackElem = document.querySelector("#current_track")
-    trackElem.innerHTML = track
+    const albumElem = document.querySelector("#current_album");
+    albumElem.innerHTML = album;
 
-    const albumElem = document.querySelector("#current_album")
-    albumElem.innerHTML = album
+    const artistElem = document.querySelector("#current_artist");
+    const nowPlayingElem = document.querySelector("#artist_name");
 
-    const artistElem = document.querySelector("#current_artist")
-    const nowPlayingElem = document.querySelector("#artist_name")
-
-    artistElem.innerHTML = artist
+    artistElem.innerHTML = artist;
     if (nowPlayingElem !== null) {
-        nowPlayingElem.innerHTML = artist
+        nowPlayingElem.innerHTML = artist;
     }
 
-    const imgElem = document.querySelector(".art_image")
-    imgElem.setAttribute("src", img)
+    const imgElem = document.querySelector(".art_image");
+    imgElem.setAttribute("src", img);
 
-    const artworkElem = document.querySelector(".artwork")
-    artworkElem.style.backgroundImage = 'url(' + img + ')'
+    const artworkElem = document.querySelector(".artwork");
+    artworkElem.style.backgroundImage = 'url(' + img + ')';
 
-    const numberElem = document.querySelector("#current_number_plays")
-    const nf = new Intl.NumberFormat('en-US')
-    const n = nf.format(number)
-    numberElem.innerHTML = n + ' Scrobbles'
+    const numberElem = document.querySelector("#current_number_plays");
+    const nf = new Intl.NumberFormat('en-US');
+    const n = nf.format(number);
+    numberElem.innerHTML = n + ' Scrobbles';
 }
 
 function modifyIdlePage(pageData) {

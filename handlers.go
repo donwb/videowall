@@ -80,6 +80,13 @@ func tvHandler(c echo.Context) error {
 	})
 }
 
+func hdlowHandler(c echo.Context) error {
+	return c.Render(http.StatusOK, "hdtvlow.html", map[string]interface{}{
+		"name": "Don",
+		"msg":  "Last FM",
+	})
+}
+
 func testHandler(c echo.Context) error {
 	arturl := getCustomArt("2019-08-11 State Farm Arena Atlanta")
 	print(arturl)
