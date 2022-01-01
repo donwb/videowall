@@ -21,3 +21,6 @@ https://www.hackster.io/mark-hank/super-simple-headless-raspberry-pi-setup-5382d
 Last.FM api docs
 https://www.last.fm/api/show/user.getRecentTracks
 
+Scrobble exporter:
+https://mainstream.ghan.nl/export.html
+
