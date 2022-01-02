@@ -1,0 +1,2 @@
+alias rlow="bash restart_low.sh"
+alias rnorm="bash restart_normal.sh"
