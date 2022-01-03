@@ -21,9 +21,12 @@ test:
 run:
 	gin
 
+docker-buildM1:
+	docker build --platform linux/amd64 -t donwb/videowall:0.8 .
+
+
 docker-build:
 	docker build -t donwb/videowall:0.8 .
-
 
 docker-run:
 	docker run --env-file=docker-env -p 80:1323 -it donwb/videowall:0.8
