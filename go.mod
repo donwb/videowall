@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/labstack/echo/v4 v4.6.1
+	github.com/lib/pq v1.10.4
 	github.com/mattn/go-sqlite3 v1.14.9
 	github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0
 )

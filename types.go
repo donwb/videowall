@@ -3,11 +3,14 @@ package main
 import "html/template"
 
 type PlayingInfo struct {
-	Artist         string `json:"artist"`
-	Album          string `json:"album"`
-	Track          string `json:"track"`
-	Art            string `json:"art"`
-	TotalPlayCount string `json:"totalPlayCount"`
+	Artist            string `json:"artist"`
+	Album             string `json:"album"`
+	Track             string `json:"track"`
+	Art               string `json:"art"`
+	TotalPlayCount    string `json:"totalPlayCount"`
+	ArtistRanking     int    `json:ranking`
+	MyArtistPlayCount int    `json:myArtistsPlayCount`
+	MaxRanks          int    `json:maxRanks`
 }
 
 type VideoWallResult struct {
@@ -17,4 +20,10 @@ type VideoWallResult struct {
 
 type TemplateRegistry struct {
 	templates *template.Template
+}
+
+type AristStats struct {
+	ranking   int
+	playCount int
+	maxRanks  int
 }

@@ -117,3 +117,9 @@ insert into artkv (album, arturl) values ('Jet Black', 'Jet Black.jpg');
 insert into artkv (album, arturl) values ('Lp Lp', 'Lp Lp.jpg');
 insert into artkv (album, arturl) values ('Doomsday - Back & Forth, Vol. 5 (Live)', 'Doomsday - Back & Forth, Vol. 5 (Live).jpg');
 insert into artkv (album, arturl) values ('Tormentor - EP', 'Tormentor - EP.jpg');
+
+
+create view artist_ranking as 
+	-- count and rank by artist
+	select dense_rank() over (order by count(artist) desc) as ranking, artist, count(artist) as total
+		from history group by artist order by total desc;

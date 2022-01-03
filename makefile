@@ -7,6 +7,7 @@ include env
 
 $(info $$APIKEY is [${APIKEY}])
 $(info $$SECRET is [${SECRET}])
+$(info $$CONN is [${CONN}])
 
 all:
 	go run *.go

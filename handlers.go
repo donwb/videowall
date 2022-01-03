@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 
@@ -37,12 +38,17 @@ func renderWall(c echo.Context) error {
 
 		fmt.Println("URL: ", albumArtURL)
 
+		artistStats := getArtistStats(artist)
+
 		pi := &PlayingInfo{
-			Artist:         artist,
-			Album:          album.Name,
-			Track:          track,
-			Art:            albumArtURL,
-			TotalPlayCount: playcount,
+			Artist:            artist,
+			Album:             album.Name,
+			Track:             track,
+			Art:               albumArtURL,
+			TotalPlayCount:    playcount,
+			ArtistRanking:     artistStats.ranking,
+			MyArtistPlayCount: artistStats.playCount,
+			MaxRanks:          artistStats.maxRanks,
 		}
 		res := &VideoWallResult{
 			Idle:       false,
@@ -88,7 +94,10 @@ func hdlowHandler(c echo.Context) error {
 }
 
 func testHandler(c echo.Context) error {
-	arturl := getCustomArt("2019-08-11 State Farm Arena Atlanta")
-	print(arturl)
-	return c.String(200, arturl)
+
+	artistStats := getArtistStats("Public Enemy")
+
+	ret := strconv.Itoa(artistStats.playCount)
+	r := strconv.Itoa(artistStats.ranking)
+	return c.String(200, ret+" ======= "+r)
 }
