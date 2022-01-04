@@ -57,6 +57,10 @@ body {
     font-weight: 200;
 }
 
+#artist_name {
+	font-weight: 400;
+}
+
 .ranking {
 	position: absolute;
     top: 910px;
@@ -67,6 +71,18 @@ body {
 
 #artist_name {
 	font-weight: 400;
+}
+
+#artist_stats {
+	font-size: 24px;
+}
+
+.popularity {
+	position: absolute;
+    top: 908px;
+    font-size: 22px;
+    font-family: "Noto Sans";
+    left: 126px;
 }
 
 .track {

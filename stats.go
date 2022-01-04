@@ -9,13 +9,8 @@ import (
 )
 
 func getArtistStats(artist string) *AristStats {
-	connectString := os.Getenv("CONN")
-	fmt.Println("Connection: ", connectString)
 
-	if len(connectString) == 0 {
-		return nil
-	}
-	fmt.Println(connectString)
+	connectString := getConnection()
 
 	db, err := sql.Open("postgres", connectString)
 	defer db.Close()
@@ -41,4 +36,53 @@ func getArtistStats(artist string) *AristStats {
 	stats.maxRanks = totalRanks
 
 	return stats
+}
+
+func getTrackStats(trackName string) *TrackStats {
+	// Get Track stats
+	connectString := getConnection()
+	db, err := sql.Open("postgres", connectString)
+	checkError(err, "opening connection")
+	defer db.Close()
+
+	trackPlayQuery := `select count(*) from history where track = $1`
+	row := db.QueryRow(trackPlayQuery, trackName)
+
+	var trackCount int
+	row.Scan(&trackCount)
+	trackStats := &TrackStats{
+		playcount: trackCount,
+	}
+
+	return trackStats
+}
+
+func getAlbumStats(albumName string) *AlbumStats {
+	connectString := getConnection()
+	db, err := sql.Open("postgres", connectString)
+	checkError(err, "opening connection")
+	defer db.Close()
+
+	albumQuery := `select count(*) from history where album = $1`
+	row := db.QueryRow(albumQuery, albumName)
+
+	var albumCount int
+	row.Scan(&albumCount)
+	albumStats := &AlbumStats{
+		playcount: albumCount,
+	}
+
+	return albumStats
+}
+
+func getConnection() string {
+	connectString := os.Getenv("CONN")
+	fmt.Println("Connection: ", connectString)
+
+	if len(connectString) == 0 {
+		return ""
+	}
+
+	fmt.Println(connectString)
+	return connectString
 }

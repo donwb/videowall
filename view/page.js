@@ -82,11 +82,21 @@ function modifyNowPlayingPage(pageData, trackElem) {
     const n = nf.format(number);
     numberElem.innerHTML = n + ' Scrobbles';
 
+    const artistStatsElem = document.querySelector("#artist_stats")
+    
     const rankingElem = document.querySelector(".ranking")
     rank = pageData.nowPlaying.ArtistRanking
     max = pageData.nowPlaying.MaxRanks
     myPlays = pageData.nowPlaying.MyArtistPlayCount
-    rankingElem.innerHTML = "ranked #" + rank + "/" + max + " with " + myPlays + " plays"
+
+    artistStatsElem.innerHTML = "(#" + rank + " artist w/" + myPlays + " plays)"
+    const fireElem = document.querySelector("#fire")
+    albumPlays = pageData.nowPlaying.MyAlbumPlayCount
+    var fires = Math.ceil(albumPlays / 50)
+    console.log(fires)
+
+    fireElem.innerHTML = '🔥'.repeat(fires)
+
 }
 
 function modifyIdlePage(pageData) {

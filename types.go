@@ -11,6 +11,8 @@ type PlayingInfo struct {
 	ArtistRanking     int    `json:ranking`
 	MyArtistPlayCount int    `json:myArtistsPlayCount`
 	MaxRanks          int    `json:maxRanks`
+	MyTrackPlayCount  int    `json:myTrackPlayCount`
+	MyAlbumPlayCount  int    `json:myAlbumPlayCount`
 }
 
 type VideoWallResult struct {
@@ -26,4 +28,12 @@ type AristStats struct {
 	ranking   int
 	playCount int
 	maxRanks  int
+}
+
+type TrackStats struct {
+	playcount int
+}
+
+type AlbumStats struct {
+	playcount int
 }

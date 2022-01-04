@@ -19,3 +19,10 @@ select count(distinct artist) from history;
 select * from artist_ranking where artist = 'The Cure'
 select max(ranking) as total_rank from artist_ranking
 
+
+select count(*) from history where track = 'Stop';
+select track, count(track) from history group by track order by count desc;
+
+select count(*) from history where album = 'Wish';
+select album, count(album) from history group by album order by count desc;
+

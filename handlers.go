@@ -39,6 +39,8 @@ func renderWall(c echo.Context) error {
 		fmt.Println("URL: ", albumArtURL)
 
 		artistStats := getArtistStats(artist)
+		trackStats := getTrackStats(track)
+		albumStats := getAlbumStats(album.Name)
 
 		pi := &PlayingInfo{
 			Artist:            artist,
@@ -49,6 +51,8 @@ func renderWall(c echo.Context) error {
 			ArtistRanking:     artistStats.ranking,
 			MyArtistPlayCount: artistStats.playCount,
 			MaxRanks:          artistStats.maxRanks,
+			MyTrackPlayCount:  trackStats.playcount,
+			MyAlbumPlayCount:  albumStats.playcount,
 		}
 		res := &VideoWallResult{
 			Idle:       false,
