@@ -51,7 +51,7 @@ body {
 .artist_banner {
 	color: #fff;
     position: absolute;
-    top: 950px;
+    top: 940px;
     left: 124px;
     font-size: 44px;
     font-weight: 200;
@@ -70,13 +70,13 @@ body {
 }
 
 #artist_stats {
-	font-size: 24px;
+	font-size: 26px;
 }
 
 .popularity {
 	position: absolute;
     top: 999px;
-    font-size: 22px;
+    font-size: 30px;
     font-family: "Noto Sans";
     left: 126px;
 }
