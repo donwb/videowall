@@ -57,6 +57,14 @@ body {
     font-weight: 200;
 }
 
+.ranking {
+	position: absolute;
+    top: 910px;
+    font-size: 22px;
+    font-family: "Noto Sans";
+    left: 126px;
+}
+
 #artist_name {
 	font-weight: 400;
 }

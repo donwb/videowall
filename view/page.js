@@ -81,6 +81,12 @@ function modifyNowPlayingPage(pageData, trackElem) {
     const nf = new Intl.NumberFormat('en-US');
     const n = nf.format(number);
     numberElem.innerHTML = n + ' Scrobbles';
+
+    const rankingElem = document.querySelector(".ranking")
+    rank = pageData.nowPlaying.ArtistRanking
+    max = pageData.nowPlaying.MaxRanks
+    myPlays = pageData.nowPlaying.MyArtistPlayCount
+    rankingElem.innerHTML = "ranked #" + rank + "/" + max + " with " + myPlays + " plays"
 }
 
 function modifyIdlePage(pageData) {

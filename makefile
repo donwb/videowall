@@ -16,7 +16,7 @@ build: ## Build
 	go build *.go
 
 test: 
-	gow -e=go,mod,html,js run .
+	gow -e=go,mod,html,js,css run .
 	
 run:
 	gin

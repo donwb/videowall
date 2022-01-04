@@ -61,6 +61,14 @@ body {
 	font-weight: 400;
 }
 
+.ranking {
+	position: absolute;
+    top: 999px;
+    font-size: 22px;
+    font-family: "Noto Sans";
+    left: 126px;
+}
+
 .track {
 	font-weight: bold;
 	font-size: 64px;
