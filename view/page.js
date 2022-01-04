@@ -95,8 +95,13 @@ function modifyNowPlayingPage(pageData, trackElem) {
     var fires = Math.ceil(albumPlays / 50)
     console.log(fires)
 
-    fireElem.innerHTML = '🔥'.repeat(fires)
-
+    // this didn't seem to work on linux chromium??
+    //fireElem.innerHTML = '🔥'.repeat(fires)
+    var fireText = ""
+    for (let i=0;i<fires;i++) {
+        fireText = fireText += '🔥'
+    }
+    fireElem.innerHTML = fireText
 }
 
 function modifyIdlePage(pageData) {
