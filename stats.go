@@ -10,6 +10,8 @@ import (
 
 func getArtistStats(artist string) *AristStats {
 	connectString := os.Getenv("CONN")
+	fmt.Println("Connection: ", connectString)
+
 	if len(connectString) == 0 {
 		return nil
 	}
