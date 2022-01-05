@@ -58,12 +58,14 @@ func renderWall(c echo.Context) error {
 			Idle:       false,
 			NowPlaying: pi,
 		}
+		fmt.Println("")
 		return c.JSONPretty(200, res, " ")
 
 	} else {
 		res := &VideoWallResult{
 			Idle: true,
 		}
+		fmt.Println("")
 		return c.JSONPretty(200, res, " ")
 	}
 

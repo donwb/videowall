@@ -65,7 +65,6 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 	}
 
 	userImages := userResult.Tracks[0].Images
-	fmt.Println(userImages)
 
 	// https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png
 	// last.fm placeholder

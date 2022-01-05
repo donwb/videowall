@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/labstack/echo/v4"
-	//"github.com/labstack/echo/v4/middleware"
 )
 
 var apiKey string
@@ -24,6 +23,8 @@ func main() {
 	fmt.Println("Starting server.....")
 	fmt.Println("======= ENVVARS =======")
 	fmt.Println("Key: " + apiKey + " Secret: " + apiPassword)
+	fmt.Println("Connect String: ", os.Getenv("CONN"))
+	fmt.Println("-------- ENVVARS ------------")
 
 	e := echo.New()
 

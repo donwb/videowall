@@ -22,7 +22,7 @@ body {
 .right_side {
     margin: 100px;
     position: absolute;
-    top: 220px;
+    top: 130px;
     left: 785px;
 }
 
@@ -53,7 +53,7 @@ body {
     position: absolute;
     top: 841px;
     left: 124px;
-    font-size: 44px;
+    font-size: 51px;
     font-weight: 200;
 }
 
@@ -74,13 +74,13 @@ body {
 }
 
 #artist_stats {
-	font-size: 26px;
+	font-size: 32px;
 }
 
 .popularity {
 	position: absolute;
     top: 900px;
-    font-size: 30px;
+    font-size: 37px;
     font-family: "Noto Sans";
     left: 126px;
 }

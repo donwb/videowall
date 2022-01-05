@@ -88,8 +88,9 @@ function modifyNowPlayingPage(pageData, trackElem) {
     rank = pageData.nowPlaying.ArtistRanking
     max = pageData.nowPlaying.MaxRanks
     myPlays = pageData.nowPlaying.MyArtistPlayCount
+    const myFormattedPlays = nf.format(myPlays)
 
-    artistStatsElem.innerHTML = "(#" + rank + " | " + myPlays + " plays)"
+    artistStatsElem.innerHTML = "(#" + rank + " | " + myFormattedPlays + " plays)"
     const fireElem = document.querySelector("#fire")
     albumPlays = pageData.nowPlaying.MyAlbumPlayCount
     var fires = Math.ceil(albumPlays / 50)

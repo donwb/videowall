@@ -77,12 +77,11 @@ func getAlbumStats(albumName string) *AlbumStats {
 
 func getConnection() string {
 	connectString := os.Getenv("CONN")
-	fmt.Println("Connection: ", connectString)
 
 	if len(connectString) == 0 {
+		fmt.Println("the connection string is empty!")
 		return ""
 	}
 
-	fmt.Println(connectString)
 	return connectString
 }
