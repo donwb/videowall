@@ -24,3 +24,6 @@ https://www.last.fm/api/show/user.getRecentTracks
 Scrobble exporter:
 https://mainstream.ghan.nl/export.html
 
+For emoji on the PI:
+https://unix.stackexchange.com/questions/627257/emoji-do-not-show-up-in-chromium-render-as-empty-boxes/627258#627258
+
