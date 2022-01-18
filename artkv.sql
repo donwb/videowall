@@ -123,3 +123,8 @@ create view artist_ranking as
 	-- count and rank by artist
 	select dense_rank() over (order by count(artist) desc) as ranking, artist, count(artist) as total
 		from history group by artist order by total desc;
+
+
+
+insert into artkv (album, arturl) values ('Ritual de lo Habitual', 'ritual.jpg');
+insert into artkv (album, arturl) values ('Nothing''s Shocking', 'nothingsshocking.jpg');
