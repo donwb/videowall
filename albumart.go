@@ -87,3 +87,23 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 
 	return largeImage, playcount
 }
+
+func pmrcLookup(lookup string) string {
+	connectString := getConnection()
+
+	db, err := sql.Open("postgres", connectString)
+	defer db.Close()
+
+	checkError(err, "opening connection for pmrc lookup")
+
+	escapedLookup := strings.ReplaceAll(lookup, "'", "''")
+	query := "select safename from pmrc where lookup = '" + escapedLookup + "';"
+
+	fmt.Println("PMRC query: ", query)
+
+	row := db.QueryRow(query)
+	var safename string
+	row.Scan(&safename)
+
+	return safename
+}

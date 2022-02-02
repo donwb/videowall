@@ -27,11 +27,12 @@ func renderWall(c echo.Context) error {
 		artist := userResult.Tracks[0].Artist.Name
 		album := userResult.Tracks[0].Album
 		track := userResult.Tracks[0].Name
+		albumName := album.Name
 
 		info := "is now playing"
 		//result = artist + " " + album.Name + " " + info
 
-		fmt.Println(artist + " " + album.Name + " " + info)
+		fmt.Println(artist + " " + albumName + " " + info)
 
 		// Get album art
 		albumArtURL, playcount := getAlbumArtAndPlayCount(artist, track)
@@ -40,11 +41,25 @@ func renderWall(c echo.Context) error {
 
 		artistStats := getArtistStats(artist)
 		trackStats := getTrackStats(track)
-		albumStats := getAlbumStats(album.Name)
+		albumStats := getAlbumStats(albumName)
+
+		// See if we should mask the artist or album name
+		safeName := pmrcLookup(artist)
+		if len(safeName) > 0 {
+			artist = safeName
+		}
+		safeAlbum := pmrcLookup(albumName)
+		if len(safeAlbum) > 0 {
+			albumName = safeAlbum
+		}
+		trackName := pmrcLookup(track)
+		if len(trackName) > 0 {
+			track = trackName
+		}
 
 		pi := &PlayingInfo{
 			Artist:            artist,
-			Album:             album.Name,
+			Album:             albumName,
 			Track:             track,
 			Art:               albumArtURL,
 			TotalPlayCount:    playcount,

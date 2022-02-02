@@ -128,3 +128,8 @@ create view artist_ranking as
 
 insert into artkv (album, arturl) values ('Ritual de lo Habitual', 'ritual.jpg');
 insert into artkv (album, arturl) values ('Nothing''s Shocking', 'nothingsshocking.jpg');
+insert into artkv (album, arturl) values ('You Goddamned Son of a Bitch', 'revco-live.jpg');
+insert into artkv (album, arturl) values ('Beers, Steers + Queers (Deluxe Edition)', 'beers-clean.jpg');
+insert into artkv (album, arturl) values ('Beers, Steers + Queers', 'beers-clean.jpg');
+insert into artkv (album, arturl) values ('Big Sexy Land', 'bsl.jpg');
+
