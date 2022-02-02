@@ -5,17 +5,20 @@ import (
 	"fmt"
 	"strings"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
 	"github.com/shkh/lastfm-go/lastfm"
 )
 
 func getCustomArt(album string) string {
 	fmt.Println("getting custom art")
 
-	db, err := sql.Open("sqlite3", "./art.db")
+	connectString := getConnection()
+
+	db, err := sql.Open("postgres", connectString)
 	defer db.Close()
 
-	checkError(err, "db opened")
+	checkError(err, "opening connection for album art")
+
 	escapedAlbum := strings.ReplaceAll(album, "'", "''")
 	query := "select arturl from artkv where album = '" + escapedAlbum + "'"
 
@@ -50,7 +53,7 @@ func getAlbumArtAndPlayCount(artist string, track string) (string, string) {
 	trackInfo, _ := api.Track.GetInfo(lastfm.P{"artist": artist, "track": track})
 	userResult, _ := api.User.GetRecentTracks(lastfm.P{"user": "dbrowning"})
 	mbid := trackInfo.Album.Mbid
-	fmt.Print("mbid: ", mbid)
+	fmt.Println("mbid: ", mbid)
 
 	playcount := trackInfo.PlayCount
 
