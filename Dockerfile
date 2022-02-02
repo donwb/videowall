@@ -14,7 +14,7 @@ RUN go mod download
 
 COPY *.go ./
 COPY view ./view
-COPY art.db ./
+# COPY art.db ./
 
 RUN go build -o /videowall
 
