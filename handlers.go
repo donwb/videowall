@@ -122,3 +122,9 @@ func testHandler(c echo.Context) error {
 	r := strconv.Itoa(artistStats.ranking)
 	return c.String(200, ret+" ======= "+r)
 }
+
+func statsHandler(c echo.Context) error {
+	topStats := getTopArtistsForDate("%Jun 2022%", 6)
+
+	return c.JSONPretty(200, topStats, " ")
+}

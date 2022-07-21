@@ -75,6 +75,52 @@ func getAlbumStats(albumName string) *AlbumStats {
 	return albumStats
 }
 
+func getTopArtistsForDate(dateToCheck string, numToReturn int) []TopArtists {
+
+	// not impl the total number to return yet
+
+	connectString := getConnection()
+
+	db, err := sql.Open("postgres", connectString)
+	defer db.Close()
+
+	checkError(err, "opening connection")
+
+	topQuery := `select artist, count(artist) as total
+	from history
+	where utc_time like $1
+	group by artist order by total desc;`
+
+	rows, err := db.Query(topQuery, dateToCheck)
+	checkError(err, "Failed running top query")
+	defer rows.Close()
+
+	retVal := make([]TopArtists, 0)
+	loopCounter := 0
+
+	for rows.Next() {
+		var art string
+		var total int
+
+		err := rows.Scan(&art, &total)
+		checkError(err, "Error on scan")
+
+		a := TopArtists{
+			Artist:    art,
+			Playcount: total,
+		}
+
+		retVal = append(retVal, a)
+		loopCounter++
+		if loopCounter >= numToReturn {
+			break
+		}
+
+	}
+
+	return retVal
+}
+
 func getConnection() string {
 	connectString := os.Getenv("CONN")
 

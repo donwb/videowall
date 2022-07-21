@@ -37,3 +37,8 @@ type TrackStats struct {
 type AlbumStats struct {
 	playcount int
 }
+
+type TopArtists struct {
+	Artist    string
+	Playcount int
+}

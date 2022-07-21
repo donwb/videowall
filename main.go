@@ -40,6 +40,7 @@ func main() {
 	e.GET("/square", squareHandler)
 	e.GET("/api", renderWall)
 	e.GET("/test", testHandler)
+	e.GET("/api/stats", statsHandler)
 
 	// Start!
 	e.Logger.Fatal(e.Start(":1323"))
