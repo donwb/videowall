@@ -76,9 +76,6 @@ func getAlbumStats(albumName string) *AlbumStats {
 }
 
 func getTopArtistsForDate(dateToCheck string, numToReturn int) []TopArtists {
-
-	// not impl the total number to return yet
-
 	connectString := getConnection()
 
 	db, err := sql.Open("postgres", connectString)

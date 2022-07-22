@@ -124,7 +124,18 @@ func testHandler(c echo.Context) error {
 }
 
 func statsHandler(c echo.Context) error {
-	topStats := getTopArtistsForDate("%Jun 2022%", 6)
+
+	rawDate := c.Param("date")
+	rawTotal := c.Param("total")
+
+	// yeah passing the Sql query, i know, it's janky but whatevs
+	date := "%" + rawDate + "%"
+	total, err := strconv.Atoi(rawTotal)
+	if err != nil {
+		total = 5
+	}
+
+	topStats := getTopArtistsForDate(date, total)
 
 	return c.JSONPretty(200, topStats, " ")
 }
