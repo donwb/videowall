@@ -26,3 +26,8 @@ select track, count(track) from history group by track order by count desc;
 select count(*) from history where album = 'Wish';
 select album, count(album) from history group by album order by count desc;
 
+-- stats query
+select artist, count(artist) as total
+	from history
+	where utc_time like '%Jul 2022%'
+	group by artist order by total desc;

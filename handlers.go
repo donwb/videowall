@@ -128,6 +128,8 @@ func statsHandler(c echo.Context) error {
 	rawDate := c.Param("date")
 	rawTotal := c.Param("total")
 
+	fmt.Println(rawDate)
+
 	// yeah passing the Sql query, i know, it's janky but whatevs
 	date := "%" + rawDate + "%"
 	total, err := strconv.Atoi(rawTotal)

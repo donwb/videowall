@@ -88,6 +88,9 @@ func getTopArtistsForDate(dateToCheck string, numToReturn int) []TopArtists {
 	where utc_time like $1
 	group by artist order by total desc;`
 
+	fmt.Println(topQuery)
+	fmt.Println(dateToCheck)
+
 	rows, err := db.Query(topQuery, dateToCheck)
 	checkError(err, "Failed running top query")
 	defer rows.Close()
